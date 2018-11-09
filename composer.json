@@ -1,0 +1,23 @@
+{
+  "name": "alan/yii2-swoole-task",
+  "description": "yi22 frame swoole task",
+  "license": "MIT",
+  "keywords": [
+    "snowflake"
+  ],
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "alan",
+      "email": "wzzjjboy@126.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.6"
+  },
+  "autoload": {
+    "psr-0": {
+      "alan\\task": "src/"
+    }
+  }
+}
