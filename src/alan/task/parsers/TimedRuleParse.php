@@ -8,8 +8,8 @@
 
 namespace alan\task\parsers;
 
-use common\asyncTasks\basic\IParse;
-use common\asyncTasks\basic\Task;
+use alan\task\basic\IParse;
+use alan\task\basic\Task;
 
 /**
  * Class TimedRuleParse

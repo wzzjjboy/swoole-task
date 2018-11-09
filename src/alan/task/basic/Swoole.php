@@ -8,7 +8,7 @@ use swoole_client;
 use swoole_process;
 use swoole_server;
 use yii\base\Component;
-use common\mqTask\behaviors\SplitLogBehaviors;
+use alan\task\behaviors\SplitLogBehaviors;
 
 /**
  *
@@ -39,7 +39,7 @@ class Swoole extends Component implements Engine
     /**
      * @var ILog
      */
-    public $log = 'common\asyncTasks\basic\Log';
+    public $log = 'alan\task\basic\Log';
 
     /**
      * @var string
@@ -100,7 +100,7 @@ class Swoole extends Component implements Engine
     /**
      * @var Task
      */
-    public $taskClass = 'common\asyncTasks\basic\Task';
+    public $taskClass = 'alan\task\basic\Task';
 
     public function init()
     {
@@ -338,7 +338,7 @@ class Swoole extends Component implements Engine
     public function stop():void
     {
         if (!($pid = $this->getPid())){
-            pr("服务未启动");
+            $this->pr("服务未启动");
         } else {
             swoole_process::kill($this->getPid(), SIGTERM);
         }
@@ -350,7 +350,7 @@ class Swoole extends Component implements Engine
     public function status():void
     {
         if($pid = $this->getPid()){
-            pr("服务正运行中... pid:{$pid}",1);
+            $this->pr("服务正运行中... pid:{$pid}",1);
         }
     }
 
@@ -368,7 +368,7 @@ class Swoole extends Component implements Engine
     public function reload(): void
     {
         if (!($pid = $this->getPid())){
-            pr("服务未启动",1);
+            $this->pr("服务未启动",1);
         }
 
         swoole_process::kill($pid, SIGUSR1);
@@ -469,5 +469,10 @@ class Swoole extends Component implements Engine
             $this->log->trace("kill $work_pid, result: " . ($result ? 'ok' : 'fail'));
             sleep(1);
         }
+    }
+
+    private function pr($str)
+    {
+        echo $str . PHP_EOL;
     }
 }

@@ -4,9 +4,8 @@ namespace alan\task\basic;
 
 use Yii;
 use yii\base\BaseObject;
-use common\utils\ToolsHelper;
-use common\asyncTasks\models\DB;
-use common\asyncTasks\models\Mysql;
+use alan\task\models\DB;
+use alan\task\models\Mysql;
 
 /**
  *
@@ -26,12 +25,12 @@ abstract class Task extends BaseObject
     /**
      * @var string
      */
-    public $ruleClass = 'common\asyncTasks\basic\Rule';
+    public $ruleClass = 'alan\task\basic\Rule';
 
     /**
      * @var DB
      */
-    public $db = 'common\asyncTasks\models\Mysql';
+    public $db = 'alan\task\models\Mysql';
 
     /**
      * @var string
@@ -215,7 +214,6 @@ abstract class Task extends BaseObject
             self::showError($msg);
         }
 
-        ToolsHelper::writelog(["generate_task" => $config, 'id' => $model->getTaskId()]);
         $task->taskId = $model->getTaskId();
         $task->db = $model;
 

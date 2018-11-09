@@ -9,7 +9,7 @@
 namespace alan\task\parsers;
 
 use yii\base\BaseObject;
-use common\asyncTasks\basic\Task;
+use alan\task\basic\Task;
 
 class BaseParse extends BaseObject
 {
